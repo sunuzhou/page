@@ -585,5 +585,30 @@ var team_settings = {"team_animation_speed":"3000","team_smooth_speed":"1000","t
    }(document, 'script', 'facebook-jssdk'));
 </script>
 	
+	   
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+	   
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: '...',
+        expiresIn:'...',
+        signedRequest:'...',
+        userID:'...'
+    }
+}
+	   
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+	   
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
 </body>
 </html>
